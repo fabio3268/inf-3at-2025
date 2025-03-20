@@ -87,9 +87,6 @@ class User
         $this->photo = $photo;
     }
 
-
-
-
     public function login () {
         echo "Olá, {$this->name}! Você por aqui de novo?";
     }
