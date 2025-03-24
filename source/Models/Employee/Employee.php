@@ -2,7 +2,10 @@
 
 namespace source\Models\Employee;
 
-class Employee
-{
+use Source\Models\User;
 
+class Employee extends User
+{
+    private $workHours;
+    private $valueHour;
 }

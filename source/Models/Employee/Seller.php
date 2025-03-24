@@ -2,7 +2,7 @@
 
 namespace source\Models\Employee;
 
-class Seller
+class Seller extends Employee
 {
-
+    private $salesValue;
 }
