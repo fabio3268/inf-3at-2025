@@ -2,6 +2,8 @@
 
 namespace Source\Models;
 
+use Source\Models\Record\Address;
+
 class User
 {
     protected $id;
@@ -10,6 +12,7 @@ class User
     protected $email;
     protected $password;
     protected $photo;
+    protected $address;
 
     public function __construct(
         int $id = null,
@@ -17,7 +20,9 @@ class User
         string $name = null,
         string $email = null,
         string $password = null,
-        string $photo = null)
+        string $photo = null,
+        Address $address = null
+    )
     {
         $this->id = $id;
         $this->idType = $idType;
@@ -25,6 +30,7 @@ class User
         $this->email = $email;
         $this->password = $password;
         $this->photo = $photo;
+        $this->address = $address;
     }
 
     public function getId(): ?int
