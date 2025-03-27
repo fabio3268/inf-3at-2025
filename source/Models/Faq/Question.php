@@ -2,6 +2,8 @@
 
 namespace Source\Models\Faq;
 
+use Source\Core\Connect;
+
 class Question
 {
 
@@ -48,6 +50,18 @@ class Question
     public function setAnswer(?string $answer): void
     {
         $this->answer = $answer;
+    }
+
+    public function findAll ()
+    {
+
+        //var_dump(Connect::getInstance());
+
+        $stmt = Connect::getInstance()->query("SELECT * FROM questions");
+        var_dump($stmt->fetchAll());
+
+        //$stmt = $connection->query("SELECT * FROM questions");
+        //var_dump($stmt->fetchAll());
     }
 
 }

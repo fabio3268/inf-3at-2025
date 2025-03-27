@@ -4,6 +4,7 @@ namespace Source\Models;
 
 //use Source\Core\Model;
 use Source\Models\Record\Address;
+use Source\Core\Connect;
 
 class User //extends Model
 {
@@ -97,5 +98,11 @@ class User //extends Model
 
     public function login () {
         echo "Olá, {$this->name}! Você por aqui de novo?";
+    }
+
+    public function findAll ()
+    {
+        $stmt = Connect::getInstance()->query("SELECT * FROM users");
+        var_dump($stmt->fetchAll());
     }
 }
