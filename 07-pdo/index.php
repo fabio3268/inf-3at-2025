@@ -1,11 +1,16 @@
 <?php
 
-require __DIR__ . "/../source/autoload.php";
+$dbUser = "root";
+$dbPassword = "asdf1234";
+$options = [
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
+];
 
-use Source\Models\User;
+$connection = new PDO(
+    "mysql:host=localhost;dbname=db-inf-3at",
+    $dbUser,
+    $dbPassword,
+);
 
-$user = new User();
-
-var_dump($user);
-
-var_dump($user->findAll());
+var_dump($connection);

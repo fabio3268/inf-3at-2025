@@ -10,6 +10,20 @@ abstract class Model
 {
     protected $table;
 
+    public function findAll(): array
+    {
+        $sql = "SELECT * FROM {$this->table}";
+
+        try {
+            //$stmt = $this->connection->query($sql);
+            $stmt = Connect::getInstance()->query($sql);
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            // Handle exception
+            return [];
+        }
+    }
+
     /*public function insert(array $data): bool
     {
         $columns = implode(", ", array_keys($data));
@@ -56,20 +70,6 @@ abstract class Model
             return false;
         }
     }*/
-
-    public function findAll(): array
-    {
-        $sql = "SELECT * FROM {$this->table}";
-
-        try {
-            //$stmt = $this->connection->query($sql);
-            $stmt = Connect::getInstance()->query($sql);
-            return $stmt->fetchAll(PDO::FETCH_OBJ);
-        } catch (PDOException $e) {
-            // Handle exception
-            return [];
-        }
-    }
 
     /*public function findById(int $id): ?array
     {

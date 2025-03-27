@@ -2,9 +2,10 @@
 
 namespace Source\Models;
 
+//use Source\Core\Model;
 use Source\Models\Record\Address;
 
-class User
+class User //extends Model
 {
     protected $id;
     protected $idType;
@@ -24,6 +25,7 @@ class User
         Address $address = null
     )
     {
+        //$this->table = "users";
         $this->id = $id;
         $this->idType = $idType;
         $this->name = $name;
