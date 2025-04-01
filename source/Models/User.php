@@ -2,11 +2,10 @@
 
 namespace Source\Models;
 
-//use Source\Core\Model;
+use Source\Core\Model;
 use Source\Models\Record\Address;
-use Source\Core\Connect;
 
-class User //extends Model
+class User extends Model
 {
     protected $id;
     protected $idType;
@@ -26,7 +25,7 @@ class User //extends Model
         Address $address = null
     )
     {
-        //$this->table = "users";
+        $this->table = "users";
         $this->id = $id;
         $this->idType = $idType;
         $this->name = $name;
@@ -100,9 +99,14 @@ class User //extends Model
         echo "Olá, {$this->name}! Você por aqui de novo?";
     }
 
-    public function findAll ()
+    /*public function findAll (): array
     {
-        $stmt = Connect::getInstance()->query("SELECT * FROM users");
-        var_dump($stmt->fetchAll());
-    }
+        try {
+            $stmt = Connect::getInstance()->query("SELECT * FROM users");
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo "Ocorreu um erro {$e}";
+            return [];
+        }
+    }*/
 }

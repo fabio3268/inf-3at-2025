@@ -33,7 +33,7 @@ class Connect
                 );
             } catch (PDOException $exception) {
                 //redirect("/ops/problemas");
-                echo "Problemas ao Conectar...";
+                echo "Problemas ao Conectar! ";
                 echo $exception->getMessage();
             }
         }
