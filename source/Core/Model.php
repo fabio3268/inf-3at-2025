@@ -24,7 +24,7 @@ abstract class Model
             $property->setAccessible(true);
             $name = $property->getName();
             $value = $property->getValue($this);
-            if ($name !== "table") {
+            if ($name !== "table" && $name !== "errorMessage") {
                 $columns[] = $name;
                 $placeholders[] = ":{$name}";
                 $values[$name] = $value;
@@ -151,7 +151,7 @@ abstract class Model
         }
     }
 
-    public function getErrorMessage (): string
+    public function getErrorMessage (): ?string
     {
         return $this->errorMessage;
     }

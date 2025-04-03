@@ -26,7 +26,7 @@ class User extends Model
         //Address $address = null
     )
     {
-        $this->table = "user";
+        $this->table = "users";
         $this->id = $id;
         $this->idType = $idType;
         $this->name = $name;
