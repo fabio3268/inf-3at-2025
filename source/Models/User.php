@@ -3,7 +3,8 @@
 namespace Source\Models;
 
 use Source\Core\Model;
-use Source\Models\Record\Address;
+
+//use Source\Models\Record\Address;
 
 class User extends Model
 {
@@ -13,7 +14,7 @@ class User extends Model
     protected $email;
     protected $password;
     protected $photo;
-    protected $address;
+    //protected $address;
 
     public function __construct(
         int $id = null,
@@ -21,18 +22,18 @@ class User extends Model
         string $name = null,
         string $email = null,
         string $password = null,
-        string $photo = null,
-        Address $address = null
+        string $photo = null
+        //Address $address = null
     )
     {
-        $this->table = "users";
+        $this->table = "user";
         $this->id = $id;
         $this->idType = $idType;
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
         $this->photo = $photo;
-        $this->address = $address;
+        //$this->address = $address;
     }
 
     public function getId(): ?int
@@ -95,18 +96,4 @@ class User extends Model
         $this->photo = $photo;
     }
 
-    public function login () {
-        echo "Olá, {$this->name}! Você por aqui de novo?";
-    }
-
-    /*public function findAll (): array
-    {
-        try {
-            $stmt = Connect::getInstance()->query("SELECT * FROM users");
-            return $stmt->fetchAll();
-        } catch (PDOException $e) {
-            echo "Ocorreu um erro {$e}";
-            return [];
-        }
-    }*/
 }
