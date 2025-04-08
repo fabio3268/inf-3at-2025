@@ -109,12 +109,12 @@ DROP TABLE IF EXISTS `products`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `products` (
   `id` int NOT NULL,
-  `category_id` int NOT NULL,
+  `idCategory` int NOT NULL,
   `name` varchar(45) NOT NULL,
   `price` double NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_products_products_categories1_idx` (`category_id`),
-  CONSTRAINT `fk_products_products_categories1` FOREIGN KEY (`category_id`) REFERENCES `products_categories` (`id`)
+  KEY `fk_products_products_categories1_idx` (`idCategory`),
+  CONSTRAINT `fk_products_products_categories1` FOREIGN KEY (`idCategory`) REFERENCES `products_categories` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -124,6 +124,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
+INSERT INTO `products` VALUES (1,1,'Smartphone',1500),(2,1,'Notebook',3500),(3,2,'Camiseta',50),(4,2,'Calça Jeans',120),(5,3,'Sofá',2000),(6,3,'Mesa de Jantar',800),(7,4,'Geladeira',2500),(8,4,'Micro-ondas',400),(9,5,'Bola de Futebol',80),(10,5,'Bicicleta',600),(11,6,'Boneca',70),(12,6,'Carrinho de Controle Remoto',150),(13,7,'Livro de Ficção',40),(14,7,'Livro de História',60),(15,8,'Perfume',120),(16,8,'Creme Hidratante',45),(17,9,'Furadeira',300),(18,9,'Chave de Fenda',20),(19,10,'Pneu',400),(20,10,'Óleo para Motor',50),(21,11,'Chocolate',10),(22,11,'Refrigerante',8),(23,12,'Caderno',15),(24,12,'Caneta',2);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,7 +139,7 @@ CREATE TABLE `products_categories` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,6 +148,7 @@ CREATE TABLE `products_categories` (
 
 LOCK TABLES `products_categories` WRITE;
 /*!40000 ALTER TABLE `products_categories` DISABLE KEYS */;
+INSERT INTO `products_categories` VALUES (1,'Eletrônicos'),(2,'Roupas'),(3,'Móveis'),(4,'Eletrodomésticos'),(5,'Esportes'),(6,'Brinquedos'),(7,'Livros'),(8,'Beleza e Cuidados Pessoais'),(9,'Ferramentas'),(10,'Automotivo'),(11,'Alimentos e Bebidas'),(12,'Papelaria e Escritório');
 /*!40000 ALTER TABLE `products_categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -219,7 +221,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   KEY `fk_users_users_types1_idx` (`idType`),
   CONSTRAINT `fk_users_users_types1` FOREIGN KEY (`idType`) REFERENCES `users_types` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -228,7 +230,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,1,'Fábio Santos','fabio@gmail.com','12345678',NULL),(2,2,'Godofredo Silva','godofredo@gmail.com','12345678',NULL),(3,1,'Nome Alterado','fabio@gmail.com','12345678',NULL),(5,1,'João Gilberto Souza','joao@gmail.com','12345678',NULL),(6,2,'Roberto Carlos Cunha','roberto@gmail.com','12345678',NULL),(9,1,'Fulano da Silva','fabio@gmail.com','12345',NULL),(10,1,'Fulano da Silva','fabio@gmail.com','12345',NULL),(14,2,'Teste de instancia','fabio@gmail.com','234567',NULL);
+INSERT INTO `users` VALUES (1,1,'Fábio Santos','fabio@gmail.com','12345678',NULL),(2,2,'Novo nome','godofredo@gmail.com','987654',NULL),(3,1,'Nome Alterado','fabio@gmail.com','12345678',NULL),(6,2,'Roberto Carlos Cunha','roberto@gmail.com','12345678',NULL),(9,1,'Fulano da Silva','fabio@gmail.com','12345',NULL),(10,1,'Fulano da Silva','fabio@gmail.com','12345',NULL),(14,2,'Teste de instancia','fabio@gmail.com','234567',NULL),(29,2,'Novo Usuário','novo@gmail.com','3456789',NULL),(30,2,'Novo Usuário','novo@gmail.com','3456789',NULL),(31,2,'Novo Usuário','novo@gmail.com','3456789',NULL),(32,2,'Novo Usuário','novo@gmail.com','3456789',NULL),(33,2,'Novo Usuário','novo@gmail.com','3456789',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -265,4 +267,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-03 16:27:51
+-- Dump completed on 2025-04-08 13:38:23
