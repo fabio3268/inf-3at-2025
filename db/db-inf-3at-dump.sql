@@ -108,14 +108,14 @@ DROP TABLE IF EXISTS `products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `products` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `idCategory` int NOT NULL,
   `name` varchar(45) NOT NULL,
   `price` double NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_products_products_categories1_idx` (`idCategory`),
   CONSTRAINT `fk_products_products_categories1` FOREIGN KEY (`idCategory`) REFERENCES `products_categories` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -221,7 +221,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   KEY `fk_users_users_types1_idx` (`idType`),
   CONSTRAINT `fk_users_users_types1` FOREIGN KEY (`idType`) REFERENCES `users_types` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -230,7 +230,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,1,'Fábio Santos','fabio@gmail.com','12345678',NULL),(2,2,'Novo nome','godofredo@gmail.com','987654',NULL),(3,1,'Nome Alterado','fabio@gmail.com','12345678',NULL),(6,2,'Roberto Carlos Cunha','roberto@gmail.com','12345678',NULL),(9,1,'Fulano da Silva','fabio@gmail.com','12345',NULL),(10,1,'Fulano da Silva','fabio@gmail.com','12345',NULL),(14,2,'Teste de instancia','fabio@gmail.com','234567',NULL),(29,2,'Novo Usuário','novo@gmail.com','3456789',NULL),(30,2,'Novo Usuário','novo@gmail.com','3456789',NULL),(31,2,'Novo Usuário','novo@gmail.com','3456789',NULL),(32,2,'Novo Usuário','novo@gmail.com','3456789',NULL),(33,2,'Novo Usuário','novo@gmail.com','3456789',NULL);
+INSERT INTO `users` VALUES (1,1,'Fábio Santos','fabio@gmail.com','12345678',NULL),(2,2,'Novo nome','godofredo@gmail.com','987654',NULL),(3,1,'Nome Alterado','fabio@gmail.com','12345678',NULL),(6,2,'Roberto Carlos Cunha','roberto@gmail.com','12345678',NULL),(9,1,'Fulano da Silva','fabio@gmail.com','12345',NULL),(10,1,'Fulano da Silva','fabio@gmail.com','12345',NULL),(14,2,'Teste de instancia','fabio@gmail.com','234567',NULL),(29,2,'Novo Usuário','novo@gmail.com','3456789',NULL),(30,2,'Novo Usuário','novo@gmail.com','3456789',NULL),(31,2,'Novo Usuário','novo@gmail.com','3456789',NULL),(32,2,'Novo Usuário','novo@gmail.com','3456789',NULL),(33,2,'Novo Usuário','novo@gmail.com','3456789',NULL),(34,2,'Novo Usuário','novo@gmail.com','3456789',NULL),(35,2,'Novo Usuário','novo@gmail.com','3456789',NULL),(36,2,'Novo Usuário','novo@gmail.com','3456789',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,4 +267,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-08 13:38:23
+-- Dump completed on 2025-04-10 17:37:10
