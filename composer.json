@@ -1,0 +1,25 @@
+{
+  "name": "fabio3268/inf-3at-2025",
+  "description": "Estrutura básica de uma aplicação MVC",
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "Fábio Santos",
+      "email": "fabiosantos@ifsul.edu.br",
+      "homepage": "https://www.ifsul.edu.br",
+      "role": "Developer"
+    }
+  ],
+  "config": {
+    "vendor-dir": "vendor"
+  },
+  "autoload": {
+    "psr-4": {
+      "Source\\": "source/"
+    }
+  },
+  "require": {
+    "php": ">=8.1",
+    "coffeecode/router" : "2.0.2"
+  }
+}
