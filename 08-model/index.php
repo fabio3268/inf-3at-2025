@@ -1,11 +1,11 @@
 <?php
 
-
 require __DIR__ . "/../source/autoload.php";
 
 use Source\Models\User;
 use Source\Models\Faq\Question;
 
+/*
 // Instanciando um Usuário vazio
 echo "<h2>Instanciando um Usuário vazio</h2>";
 $user = new User();
@@ -36,7 +36,7 @@ if($myUser->deleteById(5)) {
 else {
     echo "<h3>Registro não encontrado</h3>";
 }
-
+*/
 echo "<h2>Incluindo um novo Usuário, instanciando e depois evocando o método insert()</h2>";
 $newUser = new User(
     NULL,
@@ -45,5 +45,9 @@ $newUser = new User(
     "novo@gmail.com",
     "3456789"
 );
-$newUser->insert();
+if(!$newUser->insert()){
+    echo "erro {$newUser->getErrorMessage()}!";
+    exit();
+}
+
 var_dump($newUser);
