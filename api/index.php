@@ -26,7 +26,7 @@ $route->namespace("Source\WebService");
 $route->group("/users");
 
 $route->get("/", "Users:listUsers");
-$route->get("/id/{id}", "Users:listUserById");
+$route->get("/list/{id}","Users:listById");
 
 $route->group("null");
 
