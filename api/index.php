@@ -17,9 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 use CoffeeCode\Router\Router;
 
-$route = new Router("http://localhost:8080/inf-3at-2025",":");
+$route = new Router("http://localhost:8080/inf-3at-2025/api",":");
 
-$route->namespace("Source\Api");
+$route->namespace("Source\WebService");
 
 /* USERS */
 
