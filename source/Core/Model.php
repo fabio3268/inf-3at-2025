@@ -3,9 +3,9 @@
 namespace source\Core;
 
 use Source\Core\Connect;
-use ReflectionClass;
 use PDO;
 use PDOException;
+use ReflectionClass;
 
 abstract class Model
 {
@@ -40,11 +40,14 @@ abstract class Model
             foreach ($values as $column => $value) {
                 if(is_null($value)){
                     $stmt->bindValue($column, 'NULL', PDO::PARAM_NULL);
-                } else if(is_int($value)) {
-                    $stmt->bindValue($column, $value, PDO::PARAM_INT);
-                } else {
-                    $stmt->bindValue($column, $value, PDO::PARAM_STR);
+                    continue;
                 }
+                if(is_int($value)) {
+                    $stmt->bindValue($column, $value, PDO::PARAM_INT);
+                    continue;
+                }
+                $stmt->bindValue($column, $value);
+
             }
             if(!$stmt->execute()){
                 return false;
@@ -91,7 +94,6 @@ abstract class Model
                 }
             }
             return $stmt->execute();
-
         } catch (PDOException $e) {
             $this->errorMessage = "Erro ao inserir o registro: {$e->getMessage()}";
             return false;
@@ -113,7 +115,8 @@ abstract class Model
     public function findById (int $id): bool
     {
         try {
-            $stmt = Connect::getInstance()->prepare("SELECT * FROM {$this->table} WHERE id = :id");
+            $stmt = Connect::getInstance()
+                ->prepare("SELECT * FROM {$this->table} WHERE id = :id");
             $stmt->bindValue("id",$id);
             $stmt->execute();
             $result = $stmt->fetch();
@@ -146,7 +149,7 @@ abstract class Model
             }
             return true;
         } catch (PDOException $e) {
-            $this->errorMessage = "Erro ao inserir o registro: {$e->getMessage()}";
+            $this->errorMessage = "Erro ao excluir o registro: {$e->getMessage()}";
             return false;
         }
     }

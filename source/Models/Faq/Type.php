@@ -1,24 +1,24 @@
 <?php
 
 namespace Source\Models\Faq;
-// FAQ Type
+
 class Type
 {
     private $id;
     private $description;
 
-    public function __construct(int $id = null, string $description = null)
+    public function __construct (int $id = null, string $description = null)
     {
         $this->id = $id;
         $this->description = $description;
     }
 
-    public function getId(): ?int
+    public function getId (): ?int
     {
         return $this->id;
     }
 
-    public function setId(?int $id): void
+    public function setId (?int $id): void
     {
         $this->id = $id;
     }
@@ -32,5 +32,6 @@ class Type
     {
         $this->description = $description;
     }
+
 
 }

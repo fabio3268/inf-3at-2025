@@ -10,7 +10,7 @@ const CONF_DB_NAME = "db-inf-3at";
 const CONF_DB_USER = "root";
 const CONF_DB_PASS = "asdf1234"; // nada
 
-class Connect
+abstract class Connect
 {
     private const OPTIONS = [
         PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",

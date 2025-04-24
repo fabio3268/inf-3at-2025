@@ -6,13 +6,12 @@ use Source\Core\Model;
 
 class Question extends Model
 {
-
     private $id;
     private $idType;
     private $question;
     private $answer;
 
-    public function __construct(
+    public function __construct (
         int $id = null,
         int $idType = null,
         string $question = null,

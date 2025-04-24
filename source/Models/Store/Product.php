@@ -12,10 +12,10 @@ class Product extends Model
     private $price;
 
     public function __construct(
-        int $id = null,
-        int $idCategory = null,
-        string $name = null,
-        float $price = null
+        int $id = NULL,
+        int $idCategory = NULL,
+        string $name = NULL,
+        float $price = NULL
     )
     {
         $this->table = "products";
@@ -25,42 +25,42 @@ class Product extends Model
         $this->price = $price;
     }
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(int $id): void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
 
-    public function getIdCategory(): int
+    public function getIdCategory(): ?int
     {
         return $this->idCategory;
     }
 
-    public function setIdCategory(int $idCategory): void
+    public function setIdCategory(?int $idCategory): void
     {
         $this->idCategory = $idCategory;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
 
-    public function getPrice(): float
+    public function getPrice(): ?float
     {
         return $this->price;
     }
 
-    public function setPrice(float $price): void
+    public function setPrice(?float $price): void
     {
         $this->price = $price;
     }

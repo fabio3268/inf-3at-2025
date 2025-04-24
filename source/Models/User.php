@@ -2,9 +2,8 @@
 
 namespace Source\Models;
 
+use Source\Core\Connect;
 use Source\Core\Model;
-
-//use Source\Models\Record\Address;
 
 class User extends Model
 {
@@ -14,7 +13,6 @@ class User extends Model
     protected $email;
     protected $password;
     protected $photo;
-    //protected $address;
 
     public function __construct(
         int $id = null,
@@ -23,7 +21,6 @@ class User extends Model
         string $email = null,
         string $password = null,
         string $photo = null
-        //Address $address = null
     )
     {
         $this->table = "users";
@@ -33,7 +30,6 @@ class User extends Model
         $this->email = $email;
         $this->password = $password;
         $this->photo = $photo;
-        //$this->address = $address;
     }
 
     public function getId(): ?int
@@ -94,6 +90,38 @@ class User extends Model
     public function setPhoto(?string $photo): void
     {
         $this->photo = $photo;
+    }
+
+    public function login () {
+        echo "Olá, {$this->name}! Você está logado!";
+    }
+
+    public function insert (): bool
+    {
+
+        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            $this->errorMessage = "E-mail inválido";
+            return false;
+        }
+
+        $sql = "SELECT * FROM users WHERE email = :email";
+        $stmt = Connect::getInstance()->prepare($sql);
+        $stmt->bindValue(":email", $this->email);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $this->errorMessage = "E-mail já cadastrado";
+            return false;
+        }
+
+        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+
+        if(!parent::insert()){
+            $this->errorMessage = "Erro ao inserir o registro: {$this->getErrorMessage()}";
+            return false;
+        }
+
+        return true;
     }
 
 }

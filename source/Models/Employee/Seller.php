@@ -22,8 +22,10 @@ class Seller extends Employee
         $this->salesValue = $salesValue;
     }
 
-    public function calcSalary () : float
+    public function calcSalary(): float
     {
         return parent::calcSalary() + ($this->salesValue * 0.1);
     }
+
+
 }
