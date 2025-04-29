@@ -25,12 +25,17 @@ $route->namespace("Source\WebService");
 
 $route->group("/users");
 
+//http://localhost:8080/inf-3at-2025/api/users/
 $route->get("/", "Users:listUsers");
+//http://localhost:8080/inf-3at-2025/api/users/id/2
 $route->get("/id/{id}", "Users:listUserById");
 $route->get("/id/", "Users:listUserById");
-
-$route->post("/", "Users:createUser");
-$route->put("/", "Users:updateUser");
+//http://localhost:8080/inf-3at-2025/api/users/add
+$route->post("/add", "Users:createUser");
+//http://localhost:8080/inf-3at-2025/api/users
+$route->put("/update", "Users:updateUser");
+http://localhost:8080/inf-3at-2025/api/users/delete/id/38
+$route->delete("/delete/id/{id}", "Users:deleteUser");
 
 $route->group("null");
 

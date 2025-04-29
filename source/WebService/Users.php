@@ -78,4 +78,10 @@ class Users extends Api
         $this->call(200, "success", "Usuário atualizado com sucesso", "success")
             ->back($data);
     }
+
+    public function deleteUser (array $data): void
+    {
+        $this->call(200, "success", "Usuário excluído com sucesso", "success")
+            ->back($data);
+    }
 }
