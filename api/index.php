@@ -30,6 +30,7 @@ $route->get("/id/{id}", "Users:listUserById");
 $route->get("/id/", "Users:listUserById");
 
 $route->post("/", "Users:createUser");
+$route->put("/", "Users:updateUser");
 
 $route->group("null");
 
@@ -41,11 +42,11 @@ if ($route->error()) {
     http_response_code(404);
 
     echo json_encode([
-        "errors" => [
-            "type " => "endpoint_not_found",
-            "message" => "Não foi possível processar a requisição"
-        ]
+        "code" => 404,
+        "status" => "not_found",
+        "message" => "URL não encontrada"
     ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
 }
 
 ob_end_flush();
