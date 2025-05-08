@@ -2,6 +2,8 @@
 
 namespace Source\WebService;
 
+use Source\Core\JWTToken;
+
 class Api
 {
     protected $headers;
@@ -13,12 +15,13 @@ class Api
         $this->headers = getallheaders();
     }
 
-    protected function call (int $code, string $status = null, string $message = null): Api
+    protected function call (int $code, string $status = null, string $message = null, $type = null): Api
     {
         http_response_code($code);
         if(!empty($status)){
             $this->response = [
                 "code" => $code,
+                "type" => $type,
                 "status" => $status,
                 "message" => (!empty($message) ? $message : null)
             ];
@@ -33,6 +36,27 @@ class Api
         }
         echo json_encode($this->response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         return $this;
+    }
+
+    protected function auth(): void
+    {
+        $token = $this->headers['token'] ?? null;
+
+        if (!$token) {
+            $this->call(401, "unauthorized", "Token não fornecido", "error")->back();
+            exit();
+        }
+
+        $jwt = new JWTToken();
+        $decoded = $jwt->decode($token);
+
+        if (!$decoded) {
+            $this->call(401, "unauthorized", "Token inválido ou expirado", "error")->back();
+            exit();
+        }
+
+        $this->userAuth = $decoded->data;
+
     }
 
 }

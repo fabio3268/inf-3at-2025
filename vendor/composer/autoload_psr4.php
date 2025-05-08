@@ -7,5 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Source\\' => array($baseDir . '/source'),
+    'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'CoffeeCode\\Router\\' => array($vendorDir . '/coffeecode/router/src'),
 );

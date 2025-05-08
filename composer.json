@@ -20,6 +20,7 @@
   },
   "require": {
     "php": ">=8.1",
-    "coffeecode/router" : "2.0.2"
+    "coffeecode/router" : "2.0.2",
+    "firebase/php-jwt": "v6.11.1"
   }
 }
