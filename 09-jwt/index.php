@@ -10,7 +10,9 @@ $jwt = new JWTToken();
 // Criar um payload de exemplo
 $payload = [
     "name" => "Fábio Luís da Silva Santos",
-    "email" => "fabiosantos@ifsul.edu.br"
+    "email" => "fabiosantos@ifsul.edu.br",
+    "photo" => "teste.jpg",
+    "role" => "admin"
 ];
 
 // Gerar o token JWT

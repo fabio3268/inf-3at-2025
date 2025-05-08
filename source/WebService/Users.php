@@ -75,6 +75,7 @@ class Users extends Api
 
     public function deleteUser (array $data): void
     {
+        $this->auth();
         $this->call(200, "success", "Usuário excluído com sucesso", "success")
             ->back($data);
     }
@@ -110,9 +111,10 @@ class Users extends Api
         // Gerar o token JWT
         $jwt = new JWTToken();
         $token = $jwt->create([
-            "id" => $user->getId(),
             "email" => $user->getEmail(),
-            "name" => $user->getName()
+            "name" => $user->getName(),
+            "photo" => $user->getPhoto(),
+            "rule" => $user->getIdType()
         ]);
 
         // Retornar o token JWT na resposta

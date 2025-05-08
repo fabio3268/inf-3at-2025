@@ -25,6 +25,8 @@ if (isset($_GET['token'])) {
         echo "Token decodificado com sucesso:\n";
         var_dump($decoded);
         var_dump($decoded->data);
+        var_dump($decoded->data->name);
+        var_dump($decoded->data->email);
     } else {
         echo "Falha ao decodificar ou token expirado.\n";
     }
